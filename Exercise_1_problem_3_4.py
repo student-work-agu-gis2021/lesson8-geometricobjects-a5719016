@@ -120,6 +120,7 @@ print('lines length:', len(lines))
 # 
 
 # YOUR CODE HERE 6 to append LineString to lines
+
 #raise NotImplementedError()
 from shapely.geometry import LineString
 
@@ -135,6 +136,9 @@ assert len(lines) == len(data), "There should be as many lines as there are rows
 # 
 
 # YOUR CODE HERE 7 to find total length
+total_length = 0
+for line in lines:
+    total_length += line.length
 
 # CODE FOR TESTING YOUR SOLUTION
 
