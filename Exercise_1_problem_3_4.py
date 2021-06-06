@@ -9,12 +9,14 @@
 # 
 
 # YOUR CODE HERE 1 to read the file
+import pandas as pd
+data = pd.read_table("data/travelTimes_2015_Helsinki.txt", sep=";",)
+data = data[['from_x','from_y', 'to_x', 'to_y', 'total_route_time',]]
 #raise NotImplementedError()
 import pandas as pd 
 
 #Check how many rows and columns there are:
-data = pd.read_table("data/travelTimes_2015_Helsinki.txt", sep=";",)
-data = data[['from_x','from_y', 'to_x', 'to_y', 'total_route_time',]]
+data
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -35,7 +37,8 @@ print(list(data.columns))
 # 
 
 # YOUR CODE HERE 3 to define empty lists orig_points and dest_points
-
+orig_points = []
+dest_points = []
 # CODE FOR TESTING YOUR SOLUTION
 
 # List length should be zero at this point:
