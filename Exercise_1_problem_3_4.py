@@ -13,7 +13,8 @@
 import pandas as pd 
 
 #Check how many rows and columns there are:
-data
+data = pd.read_table("data/travelTimes_2015_Helsinki.txt", sep=";",)
+data = data[['from_x','from_y', 'to_x', 'to_y', 'total_route_time',]]
 
 # CODE FOR TESTING YOUR SOLUTION
 

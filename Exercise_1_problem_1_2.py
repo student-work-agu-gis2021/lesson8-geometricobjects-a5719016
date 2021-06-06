@@ -29,10 +29,10 @@ print(point1.geom_type)
 # 
 
 # YOUR CODE HERE 2 to define create_line_geom()
-def create_poly_geom(coords):
-    assert type(coords) is list, "Input should be a list!"
-    assert len(coords)>=3, "Polygon object requires at least three Points!"
-    line=LinString([points[0],points[1]])
+def create_line_geom(points):
+    assert type(points)=="list", "Input should be a list!"
+    assert len(points)>=2, "LineString object requires at least two Points!"
+    line = LineString([points[0], points[1]])
     return line
 
 
@@ -40,7 +40,7 @@ def create_poly_geom(coords):
 
 line1 = None
 # YOUR CODE HERE 3 to define two points and store the result in line1
-
+line1=LineString([Point(45.2,22.34),Point(100.22,-3.20)])
 
 # CODE FOR TESTING YOUR SOLUTION
 print(line1)
@@ -71,11 +71,17 @@ except Exception as e:
 
 
 # YOUR CODE HERE 4 to define create_poly_geom()
-
+def create_poly_geom(coords):
+    assert type(coords) is list, "Input should be a list!"
+    assert len(coords)>=3, "Polygon object requires at least three Points!"
+    for i in coords:
+        assert type(i) is tuple, "All list values should be coordinate tuples!"
+    poly = Polygon(coords)
+    return poly
 # Demonstrate the usage of the function. For example, create a Polygon with three points: `(45.2, 22.34)`, `(100.22, -3.20)` & `(70.0, 10.20)`.
 
 # YOUR CODE HERE 5 to define poly1 with three points
-poly1 = 
+poly1 = create_poly_geom([(45.2, 22.34),(100.22, -3.20),(70.0, 10.20)])
 
 # CODE FOR TESTING YOUR SOLUTION
 print(poly1)
@@ -106,11 +112,15 @@ except Exception as e:
 # 
 
 #  YOUR CODE HERE 6 to define get_centroid()
+def get_centroid(geom):
+    assert type(geom) == Point or type(geom)==LineString or type(geom)==Polygon, "Input should be a Shapely geometry!"
+    return geom.centroid
 
 # Test and demonstrate the usage of the function. You can, for example, create shapely objects using the functions you created in problem 1 and print out information about their centroids:
 # 
 
 #  YOUR CODE HERE 7 to define some objects
+poly1=create_poly_geom([(45.2, 22.34),(100.22, -3.20),(70.0, 10.20)])
 
 
 # CODE FOR TESTING YOUR SOLUTION
@@ -133,6 +143,8 @@ except Exception as e:
 #    - Inside the function, you should first check with `assert` -functionality that the input is a Shapely Polygon geometry (see [lesson 6](https://geo-python.github.io/site/lessons/L6/interpreting-errors.html#assertions) and [hints](https://automating-gis-processes.github.io/site/develop/lessons/L1/exercise-1.html#hints)). If something else than a list is passed for the function, you should return an Error message: `"Input should be a Shapely Polygon -object!"`
 
 # YOUR CODE HERE 8 to define get_area()
+def get_area(poly):
+    return poly.area
 
 # Test and demonstrate the usage of the function:
 get_area(poly1)
@@ -158,6 +170,11 @@ except Exception as e:
 
 
 #  YOUR CODE HERE 9 to define get_length()
+def get_length(geom):
+    if geom.geom_type == 'LineString':
+        return geom.length
+    elif geom.geom_type == 'Polygon':
+        return geom.exterior.length
 
 # Test and demonstrate the usage of the function:
 
