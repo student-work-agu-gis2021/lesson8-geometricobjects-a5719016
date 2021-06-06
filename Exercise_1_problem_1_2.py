@@ -123,6 +123,7 @@ def get_centroid(geom):
 poly1=create_poly_geom([(45.2, 22.34),(100.22, -3.20),(70.0, 10.20)])
 
 
+
 # CODE FOR TESTING YOUR SOLUTION
 centroid = get_centroid(poly1)
 print(centroid)
